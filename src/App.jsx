@@ -7,6 +7,7 @@ const Clock = () => {
 
 	useEffect(() => {
 		const timerID = setInterval(() => {
+		  console.log(timerID)
 			setDate(new Date());
 		}, 1000);
 
@@ -21,8 +22,41 @@ const Clock = () => {
 	);
 };
 
+const ButtonExample = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('You clicked submit!')
+  }
+  
+	return (
+		<div>
+			<button onClick={ handleSubmit }>
+				Click me!
+			</button>
+		</div>
+	);
+};
+
+const ButtonExample2 = () => {
+	const [ counter, setCounter ] = useState(0);
+
+	return (
+		<div>
+			<p>Counter is currently: {counter}</p>
+			<button onClick={() => setCounter(x => x - 1)}>DEC </button>
+			<button onClick={() => setCounter(x => x + 1)}>INC </button>
+		</div>
+	);
+};
+
 function App() {
-	return <div>{Clock()}</div>;
-}
+	return (
+		<div>
+			<Clock />
+			<ButtonExample />
+			<ButtonExample2 />
+		</div>
+	);
+};
 
 export default App;
